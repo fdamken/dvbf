@@ -15,9 +15,10 @@ l = 1.0  # m
 mu = 0.5  # kg m^2 / s
 g = 9.81  # m / s^2
 
+# This generates exactly 50 images.
 integration_start = 0.0  # s
 integration_stop = 10.0  # s
-integration_step = 0.1
+integration_step = 0.2
 
 image_size = 16
 mass_offset = 1
@@ -29,7 +30,6 @@ border_offset = int(50 / 10.0)
 def motion_odes(y, t, u):
     phi = y[0]
     phi_dot = y[1]
-    print(integration_start, integration_stop, t)
     phi_ddot = (-mu * phi_dot + m * g * l * np.sin(phi) + u(t)) / (m * l ** 2)
     return phi_dot, phi_ddot
 
